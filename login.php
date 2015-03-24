@@ -17,7 +17,7 @@
 				$errors[]='This user name password is incorrect.';
 			}else {
 				 $_SESSION['user_id']=$users;
-				 header('Location: index.php');
+			     header('Location: index.php');
 				 exit();
 			}
 		}
@@ -25,8 +25,8 @@
 	} else{
 		$errors[]='No access';
 	}
-	if(empty($errors) == false):
-
+	if(empty($errors) == false && isset($errors) == true):
+		$title = "Login";
 		include('_include/header.php'); 
 		include('_include/login-form.php'); 
 		include('_include/footer.php'); 

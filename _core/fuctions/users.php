@@ -8,7 +8,7 @@ function recover($mode ,$email){
 		die();
 	}else if($mode='password'){
 		$generate_password=substr(md5(rand(999,999999)), 0 , 8);
-		$qurey= "UPDATE ".USERS_TABLE." SET `password_recover` = '1' WHERE ".USERS_TABLE.".`user_id` =".$user_data['user_id'];
+		$qurey= "UPDATE `users` SET `password_recover` = '1' WHERE `users`.`user_id` =".$user_data['user_id'];
 		mysql_query($qurey);
 		echo "Hey ".$user_data['first_name']." is your password->". $generate_password;
 		change_password($user_data['user_id'],$generate_password);
@@ -20,7 +20,7 @@ function update_user($update_data,$user_id){
 	foreach($update_data as $field=>$data){
 		$update[] ='`'.$field.'` = "'.$data.'"';
 	}
-	$qurey = "UPDATE ".USERS_TABLE." SET ".implode(',',$update)." WHERE `user_id`=".$user_id;
+	$qurey = "UPDATE `users` SET ".implode(',',$update)." WHERE `user_id`=".$user_id;
 	mysql_query($qurey);
 }
 function change_password($user_id, $password){
@@ -44,7 +44,7 @@ function register_user($register_data){
 	$fields ='`' . implode('`,`',array_keys($register_data)) . '`';
 	$data = '\''.implode('\',\'',$register_data). '\'';
 	
-	$query="INSERT INTO ".USERS_TABLE." ($fields) VALUES($data)";
+	$query="INSERT INTO `users` ($fields) VALUES($data)";
 	mysql_query($query);
  
 }
@@ -81,7 +81,7 @@ function user_power($username){
 }
 function user_access($user_id){
 	$user_id = sanatize($user_id);
-	$qurrey = mysql_query("SELECT `power` FROM ".USERS_TABLE." WHERE user_id = '$user_id'");
+	$qurrey = mysql_query("SELECT `power` FROM `users` WHERE user_id = '$user_id'");
 	return mysql_result($qurrey,0);
 }
 function email_exist( $mail){

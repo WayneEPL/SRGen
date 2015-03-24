@@ -21,9 +21,34 @@
 				$errors[]="Sorry the email is already in use";
 			}
 		}
+
+		if(empty($errors) == true && isset($errors) == false){
+
+			$register_data = array(
+				'password'	 		=> $_POST['password'],
+				'name'		 		=> $_POST['name'],
+				'email' 	 		=> $_POST['email'],
+				'username' 	 		=> $_POST['email'],
+				'register_no'		=> $_POST['register_no'],
+				'admission_no' 		=> $_POST['admission_no'],
+				'address' 	 		=> $_POST['address'],
+				'co_ordinator' 		=> $_POST['co_ordinator'],
+				'head_of_division'  => $_POST['head_of_division'],
+				'hostel'			=> $_POST['hostel'],
+				'branch' 			=> $_POST['branch'],
+				'dob'				=> $_POST['dob'],
+				'doa'				=> $_POST['doa'],
+				'religion'			=> $_POST['religion'],
+				'cast'				=> $_POST['cast'],
+				'phone'				=> $_POST['phone'],
+				'admission_type'	=> $_POST['admission_type']
+			);
+
+			register_user($register_data);
+		}
 	}
 
-
+	$title = "Registeration";
 	include('_include/header.php'); 
 	include('_include/register-form.php'); 
 	include('_include/footer.php'); 

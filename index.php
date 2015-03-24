@@ -1,5 +1,6 @@
 <?php
   include('_core/init.php'); 
+  
   if(loggedin()== true){
     $title = "Dashboard";
     include('_include/header.php'); 

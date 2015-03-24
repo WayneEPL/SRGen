@@ -5,7 +5,8 @@
 	require 'settings-local.php';	
 	require 'database/db_connect.php';
 	require 'fuctions/users.php';
-	require 'fuctions/general.php';	
+	require 'fuctions/general.php';
+	require 'fuctions/rest.php';	
 	
 	$current_page=explode('/',$_SERVER['SCRIPT_NAME']);
 	$current_page=end($current_page);
